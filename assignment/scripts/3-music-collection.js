@@ -10,6 +10,13 @@ function addToCollection(collection, title, artist, yearPublished){
   return album;
 }
 
+function showCollection(collection){
+  for(let i =0; i<collection.length; i++){
+    console.log(`${collection.title} by ${collection.artist}, published in ${collection.year}`);
+  }
+}
+
+// Testing addToCollection
 let myCollection = [];
 console.log("Adding albums to my collection.");
 console.log(addToCollection(myCollection, 'Minecraft, Volume Alpha', 'C418', 2011));
@@ -18,9 +25,9 @@ console.log(addToCollection(myCollection, 'Pure Heroine', 'Lorde', 2014));
 console.log(addToCollection(myCollection, 'For Emma, Forever Ago', 'Bon Iver', 2008));
 console.log(addToCollection(myCollection, 'Circles', 'Mac Miller', 2020));
 console.log(addToCollection(myCollection, 'Saturday Night Wrist', 'Deftones', 2006));
+console.log("My collection:", myCollection);
 
-
-
+// Testing showCollection
 
 
 
