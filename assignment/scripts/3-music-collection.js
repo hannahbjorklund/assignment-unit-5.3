@@ -16,10 +16,20 @@ function showCollection(collection){
   }
 }
 
+function findByArtist(collection, artistToFind){
+  let results = [];
+  for(let i=0; i<collection.length; i++){
+    if(collection[i].artist == artistToFind){
+      results.push(collection[i]);
+    }
+  }
+  return results;
+}
+
 // Testing addToCollection
 let myCollection = [];
 console.log("Adding albums to my collection.");
-console.log(addToCollection(myCollection, 'Minecraft, Volume Alpha', 'C418', 2011));
+console.log(addToCollection(myCollection, 'Minecraft Volume Alpha', 'C418', 2011));
 console.log(addToCollection(myCollection, 'Rumours', 'Fleetwood Mac', 1977));
 console.log(addToCollection(myCollection, 'Pure Heroine', 'Lorde', 2014));
 console.log(addToCollection(myCollection, 'For Emma, Forever Ago', 'Bon Iver', 2008));
@@ -31,8 +41,11 @@ console.log("My collection:", myCollection);
 console.log("Showing my collection:");
 showCollection(myCollection);
 
-// 
-
+// Testing findByArtist
+console.log("Searching for albums by Mac Miller, expect 1 result:", findByArtist(myCollection, 'Mac Miller'));
+console.log("Searching for albums by Whitney Houston, expect no results:", findByArtist(myCollection, 'Whitney Houston'));
+addToCollection(myCollection, 'Minecraft Volume Beta', 'C418', 2013);
+console.log("Searching for albums by C418, expect 2 results:", findByArtist(myCollection, 'C418'));
 
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
