@@ -12,7 +12,7 @@ function addToCollection(collection, title, artist, yearPublished){
 
 function showCollection(collection){
   for(let i =0; i<collection.length; i++){
-    console.log(`${collection.title} by ${collection.artist}, published in ${collection.year}`);
+    console.log(`${collection[i].title} by ${collection[i].artist}, published in ${collection[i].yearPublished}`);
   }
 }
 
@@ -28,9 +28,10 @@ console.log(addToCollection(myCollection, 'Saturday Night Wrist', 'Deftones', 20
 console.log("My collection:", myCollection);
 
 // Testing showCollection
+console.log("Showing my collection:");
+showCollection(myCollection);
 
-
-
+// 
 
 
 
