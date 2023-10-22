@@ -26,6 +26,20 @@ function findByArtist(collection, artistToFind){
   return results;
 }
 
+function search(collection, searchCriteria){
+  let results = [];
+  if(searchCriteria == null || searchCriteria.artist == null || searchCriteria.yearPublished == null
+    || searchCriteria.artist == ''){
+    return collection;
+  }
+  for(let i=0; i<collection.length; i++){
+    if(collection[i].artist == searchCriteria.artist && collection[i].yearPublished == searchCriteria.yearPublished){
+      results.push(collection[i]);
+    }
+  }
+  return results;
+}
+
 // Testing addToCollection
 let myCollection = [];
 console.log("Adding albums to my collection.");
@@ -47,6 +61,18 @@ console.log("Searching for albums by Whitney Houston, expect no results:", findB
 addToCollection(myCollection, 'Minecraft Volume Beta', 'C418', 2013);
 console.log("Searching for albums by C418, expect 2 results:", findByArtist(myCollection, 'C418'));
 
+// Testing search
+// Adding another Deftones album for tests
+addToCollection(myCollection, 'White Pony', 'Deftones', 2000);
+console.log("Searching for albums by Deftones in 2006, expect 1 result:", search(myCollection, {artist: 'Deftones', yearPublished: 2006}));
+console.log("Searching for albums by Deftones in 2001, expect no results:", search(myCollection, {artist: 'Deftones', yearPublished: 2001}));
+// Adding a fake Deftones album for more tests
+addToCollection(myCollection, 'Totally Real Album', 'Deftones', 2000);
+console.log("Added another Deftone's album from 2000, expect 2 results:", search(myCollection, {artist: 'Deftones', yearPublished: 2000}));
+console.log("Searching with no search object:", search(myCollection));
+console.log("Searching with empty search object:", search(myCollection, {}));
+console.log("Searching with missing artist:", search(myCollection, {yearPublished: 2006}));
+console.log("Searching with missing year data:", search(myCollection, {artist: 'Deftones'}));
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
